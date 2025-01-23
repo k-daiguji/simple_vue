@@ -3,13 +3,16 @@
     "allowImportingTsExtensions": true,
     "baseUrl": ".",
     "composite": true,
+    "isolatedModules": true,
     "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "bundler",
     "noEmit": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "~/*": ["./tests/*"]
-    }
+      "@/*": ["src/*"],
+      "~/*": ["tests/*"]
+    },
+    "strict": true,
+    "target": "ESNext"
   },
-  "include": ["env.d.ts", "src", "tests"]
+  "include": ["src/env.d.ts", "src/**/*", "tests"]
 }

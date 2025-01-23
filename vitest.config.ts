@@ -1,16 +1,18 @@
-import { defineConfig } from "vitest/config";
-import vue from "@vitejs/plugin-vue";
+import { defineConfig, mergeConfig } from "vitest/config";
 
-export default defineConfig({
-  plugins: [vue()],
-  resolve: {
-    alias: {
-      "@": `${__dirname}/src`,
-      "~": `${__dirname}/tests`,
+import viteConfig from "./vite.config";
+
+export default mergeConfig(
+  viteConfig,
+  defineConfig({
+    resolve: {
+      alias: {
+        "~": `${__dirname}/tests`,
+      },
     },
-  },
-  test: {
-    environment: "happy-dom",
-    globals: true,
-  },
-});
+    test: {
+      environment: "happy-dom",
+      globals: true,
+    },
+  }),
+);
