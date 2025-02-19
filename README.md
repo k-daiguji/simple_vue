@@ -1,7 +1,7 @@
 # simple_vue
 
-[![npm version](https://img.shields.io/badge/vite-6.0.11-green)](https://www.npmjs.com/)
-[![npm version](https://img.shields.io/badge/vitest-3.0.3-green)](https://nodejs.jp/)
+[![npm version](https://img.shields.io/badge/vite-6.1.1-green)](https://www.npmjs.com/)
+[![npm version](https://img.shields.io/badge/vitest-3.0.6-green)](https://nodejs.jp/)
 
 [![npm version](https://img.shields.io/badge/typescript-5.7.3-green)](https://www.npmjs.com/package/typescript)
 [![npm version](https://img.shields.io/badge/vue-3.5.8-green)](https://www.npmjs.com/package/vue)
