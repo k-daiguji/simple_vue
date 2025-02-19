@@ -5,11 +5,6 @@ import viteConfig from "./vite.config";
 export default mergeConfig(
   viteConfig,
   defineConfig({
-    resolve: {
-      alias: {
-        "~": `${__dirname}/tests`,
-      },
-    },
     test: {
       environment: "happy-dom",
       globals: true,

@@ -8,8 +8,7 @@
     "moduleResolution": "bundler",
     "noEmit": true,
     "paths": {
-      "@/*": ["src/*"],
-      "~/*": ["tests/*"]
+      "@/*": ["src/*"]
     },
     "strict": true,
     "target": "ESNext"
