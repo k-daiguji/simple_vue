@@ -8,6 +8,7 @@ export default mergeConfig(
     test: {
       environment: "happy-dom",
       globals: true,
+      setupFiles: ["src/base/extensions"],
     },
   }),
 );
