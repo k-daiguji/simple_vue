@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import "@/base/extensions/array";
+import "@/base/extensions";
 
 const numbers = [1, 2, 3];
 const strings = ["a", "b", "c"];
