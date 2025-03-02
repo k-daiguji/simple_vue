@@ -10,9 +10,23 @@ declare global {
   }
 
   interface Array<T> {
-    first: () => T | undefined;
+    first: <K extends unknown[]>(
+      this: K,
+    ) => K extends [infer U, ...(infer _)[]] ? U : T | undefined;
     isEmpty: () => boolean;
-    last: (this: T[]) => T | undefined;
+    last: <K extends unknown[]>(
+      this: K,
+    ) => K extends [...(infer _)[], infer U] ? U : T | undefined;
+  }
+
+  interface ReadonlyArray<T extends unknown[]> {
+    first: <K extends readonly unknown[]>(
+      this: K,
+    ) => K extends readonly [infer U, ...(infer _)[]] ? U : T | undefined;
+    isEmpty: () => boolean;
+    last: <K extends readonly unknown[]>(
+      this: K,
+    ) => K extends readonly [...(infer _)[], infer U] ? U : T | undefined;
   }
 }
 
@@ -24,14 +38,14 @@ Array.zip = <T extends unknown[][]>(...arrays: T) => {
   );
 };
 
-Array.prototype.first = function <T>(this: T[]) {
-  return this.at(0);
+Array.prototype.first = function <T extends unknown[]>(this: T) {
+  return this.at(0) as T extends [infer U, ...(infer _)[]] ? U : T | undefined;
 };
 
 Array.prototype.isEmpty = function () {
   return this.length === 0;
 };
 
-Array.prototype.last = function <T>(this: T[]) {
-  return this.at(-1);
+Array.prototype.last = function <T extends unknown[]>(this: T) {
+  return this.at(-1) as T extends [...(infer _)[], infer U] ? U : T | undefined;
 };
