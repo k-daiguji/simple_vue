@@ -16,3 +16,7 @@ export interface CountryConstructor {
 export interface Country {
   get now(): string;
 }
+
+export interface Name {
+  get fullName(): string;
+}
