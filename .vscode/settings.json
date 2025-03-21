@@ -1,7 +1,5 @@
 {
-  "cSpell.words": [
-    "biomejs"
-  ],
+  "cSpell.words": ["biomejs", "tailwindcss"],
   "editor.codeActionsOnSave": {
     "quickfix.biome": "explicit",
     "source.organizeImports.biome": "explicit"

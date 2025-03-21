@@ -13,6 +13,7 @@ const result = new Map<string, unknown>([
   <div
     v-for="[key, values] in result"
     :key="key"
+    class="bg-sky-200 hover:bg-sky-400"
   >
     <span>{{ key }}: </span>
     <span>{{ values }}</span>
