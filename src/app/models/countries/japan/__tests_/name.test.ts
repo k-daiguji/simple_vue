@@ -1,8 +1,6 @@
-import { test as base } from "vitest";
+import { test } from "vitest";
 
-import { JapaneseName } from "@/base/countries/japan/name";
-
-const test = base.extend({});
+import { JapaneseName } from "@/app/models/countries/japan/name";
 
 const fullWidth = {
   space: "\u3000",

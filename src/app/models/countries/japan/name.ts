@@ -1,4 +1,4 @@
-import type { Name } from "..";
+import type { Name } from "@/app/models/countries";
 
 const REGEX = /([ぁ-ん]|[ァ-ン]|[一-龠])+/;
 
