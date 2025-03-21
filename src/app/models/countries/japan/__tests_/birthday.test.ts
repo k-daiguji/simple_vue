@@ -1,8 +1,7 @@
-import { test as base, vi } from "vitest";
+import { test, vi } from "vitest";
 
-import { JapaneseBirthday } from "@/base/countries/japan/birthday";
+import { JapaneseBirthday } from "@/app/models/countries/japan/birthday";
 
-const test = base.extend({});
 vi.setSystemTime(new Date("2000/04/01 9:00:00"));
 
 test.for([

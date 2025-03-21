@@ -1,4 +1,4 @@
-import type { Birthday } from "..";
+import type { Birthday } from "@/app/models/countries";
 
 export class JapaneseBirthday implements Birthday {
   private readonly _date;
