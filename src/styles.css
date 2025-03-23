@@ -1,1 +1,35 @@
 @import "tailwindcss";
+
+.bg-theme-main {
+  background-color: skyblue;
+
+  &:disabled {
+    background-color: grey;
+  }
+
+  &.hover:enabled:hover {
+    background-color: blue;
+  }
+}
+
+.text-theme-main {
+  color: black;
+
+  @media (prefers-color-scheme: dark) {
+    color: white;
+  }
+}
+
+span.ripple {
+  animation: ripple 500ms linear;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  position: absolute;
+  transform: scale(0);
+}
+@keyframes ripple {
+  to {
+    opacity: 0;
+    transform: scale(4);
+  }
+}
