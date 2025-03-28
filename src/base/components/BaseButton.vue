@@ -1,31 +1,29 @@
 <script setup lang="ts">
-import { computed, useTemplateRef } from "vue";
+import type { Theme } from "./theme";
 
-import { Ripple } from "./effectRipple";
-
-const { enabled = true } = defineProps<{ text: string; enabled?: boolean }>();
+defineProps<{
+  enabled: boolean;
+  text: string;
+  theme: Theme;
+}>();
 defineEmits<{ click: [] }>();
-
-const button = useTemplateRef<HTMLButtonElement>("button");
-const ripple = computed(() => new Ripple(button.value));
 </script>
 
 <template>
-  <button
-    ref="button"
-    class="
-      h-8
-      overflow-hidden
-      relative
-      rounded-full
-    "
-    type="button"
-    :disabled="!enabled"
-    @click="(e) => {
-      ripple.trigger(e);
-      $emit('click');
-    }"
-  >
-    {{ text }}
-  </button>
+  <div>
+    <button
+      ref="button"
+      class="
+        h-8
+        rounded-full
+        w-full
+      "
+      :class="theme.class"
+      type="button"
+      :disabled="!enabled"
+      @click="$emit('click')"
+    >
+      {{ text }}
+    </button>
+  </div>
 </template>
