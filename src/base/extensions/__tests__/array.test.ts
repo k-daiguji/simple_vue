@@ -62,4 +62,19 @@ describe("Array.prototype extensions", () => {
 
     expect(actual).toBe(expected);
   });
+
+  test("transpose", ({ expect }) => {
+    const input = [
+      [1, "a", true],
+      [2, "b", false],
+    ];
+
+    const actual = input.transpose();
+
+    expect(actual).toStrictEqual([
+      [1, 2],
+      ["a", "b"],
+      [true, false],
+    ]);
+  });
 });

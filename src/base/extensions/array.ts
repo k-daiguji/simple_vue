@@ -17,6 +17,7 @@ declare global {
     last: <K extends unknown[]>(
       this: K,
     ) => K extends [...(infer _)[], infer U] ? U : T | undefined;
+    transpose: <K extends unknown[][]>(this: K) => K;
   }
 
   interface ReadonlyArray<T> {
@@ -27,6 +28,7 @@ declare global {
     last: <K extends readonly unknown[]>(
       this: K,
     ) => K extends readonly [...(infer _)[], infer U] ? U : T | undefined;
+    transpose: <K extends unknown[][]>(this: K) => K;
   }
 }
 
@@ -48,4 +50,8 @@ Array.prototype.first = function <T extends unknown[]>(this: T) {
 
 Array.prototype.last = function <T extends unknown[]>(this: T) {
   return this.at(-1) as T extends [...(infer _)[], infer U] ? U : T | undefined;
+};
+
+Array.prototype.transpose = function <T extends unknown[][]>(this: T) {
+  return this[0].map((_, i) => this.map(column => column[i])) as T;
 };
