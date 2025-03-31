@@ -1,7 +1,5 @@
-export interface Theme {
-  get class(): string;
-}
+export type Theme = (typeof Theme)[keyof typeof Theme];
 
-export const themeKey = {
-  primary: "themePrimary",
+export const Theme = {
+  primary: "theme-primary",
 } as const;
