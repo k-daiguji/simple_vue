@@ -18,7 +18,7 @@ defineEmits<{ click: [] }>();
         rounded-full
         w-full
       "
-      :class="theme.class"
+      :class="theme"
       type="button"
       :disabled="!enabled"
       @click="$emit('click')"

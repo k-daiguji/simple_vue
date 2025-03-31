@@ -2,9 +2,9 @@ import { shallowMount } from "@vue/test-utils";
 import { test } from "vitest";
 
 import BaseButton from "../BaseButton.vue";
-import type { Theme } from "../theme";
+import { Theme } from "../theme";
 
-const theme = { class: "dummy" } satisfies Theme;
+const theme = Theme.primary;
 
 test("Mounted enabled component.", ({ expect }) => {
   const text = "Test";
@@ -15,7 +15,7 @@ test("Mounted enabled component.", ({ expect }) => {
 
   const button = wrapper.find("button");
   expect(button.attributes()).toStrictEqual({
-    class: `h-8 rounded-full w-full ${theme.class}`,
+    class: `h-8 rounded-full w-full ${theme}`,
     type: "button",
   });
   expect(button.text()).toBe(text);
@@ -30,7 +30,7 @@ test("Mounted disabled component.", ({ expect }) => {
 
   const button = wrapper.find("button");
   expect(button.attributes()).toStrictEqual({
-    class: `h-8 rounded-full w-full ${theme.class}`,
+    class: `h-8 rounded-full w-full ${theme}`,
     disabled: "",
     type: "button",
   });

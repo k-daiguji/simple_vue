@@ -3,14 +3,10 @@ import { test } from "vitest";
 
 import CounterArea from "@/app/components/CounterArea.vue";
 import BaseButton from "@/base/components/BaseButton.vue";
-import { type Theme, themeKey } from "@/base/components/theme";
-
-const theme = { class: "dummy" } satisfies Theme;
+import { Theme } from "@/base/components/theme";
 
 test("Mounted component.", ({ expect }) => {
-  using wrapper = shallowMount(CounterArea, {
-    global: { provide: { [themeKey.primary]: theme } },
-  });
+  using wrapper = shallowMount(CounterArea);
 
   const texts = ["Increment", "Decrement", "Reset"];
   const buttons = wrapper.findAllComponents(BaseButton);
@@ -18,7 +14,7 @@ test("Mounted component.", ({ expect }) => {
     expect(button.props()).toStrictEqual({
       enabled: true,
       text,
-      theme,
+      theme: Theme.primary,
     });
   }
   expect(wrapper.find("p").text()).toBe("0");
@@ -27,9 +23,7 @@ test("Mounted component.", ({ expect }) => {
 test("When the user presses the 'increment' button, the value of the counter increases by 1.", async ({
   expect,
 }) => {
-  using wrapper = shallowMount(CounterArea, {
-    global: { provide: { [themeKey.primary]: theme } },
-  });
+  using wrapper = shallowMount(CounterArea);
   const [incrementButton] = wrapper.findAllComponents(BaseButton);
 
   await incrementButton.trigger("click");
@@ -40,9 +34,7 @@ test("When the user presses the 'increment' button, the value of the counter inc
 test("When the user presses the 'decrement' button, the value of the counter decreases by 1.", async ({
   expect,
 }) => {
-  using wrapper = shallowMount(CounterArea, {
-    global: { provide: { [themeKey.primary]: theme } },
-  });
+  using wrapper = shallowMount(CounterArea);
   const [, decrementButton] = wrapper.findAllComponents(BaseButton);
 
   await decrementButton.trigger("click");
@@ -53,9 +45,7 @@ test("When the user presses the 'decrement' button, the value of the counter dec
 test("When the user presses the 'reset' button, the value of the counter is reset to 0.", async ({
   expect,
 }) => {
-  using wrapper = shallowMount(CounterArea, {
-    global: { provide: { [themeKey.primary]: theme } },
-  });
+  using wrapper = shallowMount(CounterArea);
   const [incrementButton, , resetButton] =
     wrapper.findAllComponents(BaseButton);
   await incrementButton.trigger("click");
