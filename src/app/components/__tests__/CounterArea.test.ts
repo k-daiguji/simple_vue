@@ -3,21 +3,30 @@ import { test } from "vitest";
 
 import CounterArea from "@/app/components/CounterArea.vue";
 import BaseButton from "@/base/components/BaseButton.vue";
+import BaseIcon from "@/base/components/BaseIcon.vue";
+import { Icon } from "@/base/components/icon";
 import { Theme } from "@/base/components/theme";
 
 test("Mounted component.", ({ expect }) => {
   using wrapper = shallowMount(CounterArea);
 
-  const texts = ["Increment", "Decrement", "Reset"];
-  const buttons = wrapper.findAllComponents(BaseButton);
-  for (const [text, button] of Array.zip(texts, buttons)) {
+  for (const [button, expected] of Array.zip(
+    wrapper.findAllComponents(BaseButton),
+    ["Increment", "Decrement", "Reset"],
+  )) {
     expect(button.props()).toStrictEqual({
       enabled: true,
-      text,
+      text: expected,
       theme: Theme.primary,
     });
   }
   expect(wrapper.find("p").text()).toBe("0");
+  for (const [icon, expected] of Array.zip(
+    wrapper.findAllComponents(BaseIcon),
+    [Icon.zoomIn, Icon.zoomOut, Icon.restartAlt],
+  )) {
+    expect(icon.props()).toStrictEqual({ icon: expected });
+  }
 });
 
 test("When the user presses the 'increment' button, the value of the counter increases by 1.", async ({
